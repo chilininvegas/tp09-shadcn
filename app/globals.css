@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -49,8 +49,12 @@
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: var(--color-pink-500);          /* https://tailwindcss.com/docs/colors#referencing-in-css */
-  --primary-foreground: var(--color-white);  /* https://tailwindcss.com/docs/colors#referencing-in-css */
+  --primary: var(
+    --color-pink-500
+  ); /* https://tailwindcss.com/docs/colors#referencing-in-css */
+  --primary-foreground: var(
+    --color-white
+  ); /* https://tailwindcss.com/docs/colors#referencing-in-css */
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
   --muted: oklch(0.967 0.001 286.375);
@@ -121,7 +125,12 @@
   body {
     @apply bg-background text-foreground;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-bold;
   }
   h1 {
@@ -139,7 +148,9 @@
   h5 {
     font-size: 1.25rem;
   }
-  h6, p, span {
+  h6,
+  p,
+  span {
     font-size: 1rem;
   }
 }
