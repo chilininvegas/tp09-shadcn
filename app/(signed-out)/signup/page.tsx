@@ -45,29 +45,20 @@ const formSchema = z
     accountType: z.enum(['individual', 'business']),
     companyName: z.string().optional(),
     numEmployees: z.number().optional(),
-    dob: z.date().optional().superRefine((date, ctx) => {
-      if (!date) {
-        ctx.addIssue({
-          code: 'custom',
-          message: 'Date of birth is required'
-        })
-        return
+    dob: z.date().refine(
+      (date) => {
+        const today = new Date()
+        const eighteenYearsAgo = new Date(
+          today.getFullYear() - 18,
+          today.getMonth(),
+          today.getDate()
+        )
+        return date <= eighteenYearsAgo
+      },
+      {
+        message: 'You must be at least 18 years old to sign up'
       }
-
-      const today = new Date()
-      const eighteenYearsAgo = new Date(
-        today.getFullYear() - 18,
-        today.getMonth(),
-        today.getDate()
-      )
-
-      if (date > eighteenYearsAgo) {
-        ctx.addIssue({
-          code: 'custom',
-          message: 'You must be at least 18 years old to sign up'
-        })
-      }
-    }),
+    ),
     password: z
       .string()
       .min(8, 'Password must be at least 8 characters long')
