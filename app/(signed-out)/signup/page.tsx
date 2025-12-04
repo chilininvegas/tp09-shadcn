@@ -45,20 +45,29 @@ const formSchema = z
     accountType: z.enum(['individual', 'business']),
     companyName: z.string().optional(),
     numEmployees: z.number().optional(),
-    dob: z.date().refine(
-      (date) => {
-        const today = new Date()
-        const eighteenYearsAgo = new Date(
-          today.getFullYear() - 18,
-          today.getMonth(),
-          today.getDate()
-        )
-        return date <= eighteenYearsAgo
-      },
-      {
-        message: 'You must be at least 18 years old to sign up'
+    dob: z.date().optional().superRefine((date, ctx) => {
+      if (!date) {
+        ctx.addIssue({
+          code: 'custom',
+          message: 'Date of birth is required'
+        })
+        return
       }
-    ),
+
+      const today = new Date()
+      const eighteenYearsAgo = new Date(
+        today.getFullYear() - 18,
+        today.getMonth(),
+        today.getDate()
+      )
+
+      if (date > eighteenYearsAgo) {
+        ctx.addIssue({
+          code: 'custom',
+          message: 'You must be at least 18 years old to sign up'
+        })
+      }
+    }),
     password: z
       .string()
       .min(8, 'Password must be at least 8 characters long')
@@ -77,7 +86,7 @@ const formSchema = z
       // Validate companyName is provided for business accounts
       if (!data.companyName || data.companyName.trim() === '') {
         ctx.addIssue({
-          code: z.ZodIssueCode.custom,
+          code: 'custom',
           message: 'Company name is required for business accounts',
           path: ['companyName']
         })
@@ -86,7 +95,7 @@ const formSchema = z
       // Validate numEmployees is provided and >= 1 for business accounts
       if (!data.numEmployees || data.numEmployees < 1) {
         ctx.addIssue({
-          code: z.ZodIssueCode.custom,
+          code: 'custom',
           message: 'Number of employees must be at least 1',
           path: ['numEmployees']
         })
@@ -96,7 +105,7 @@ const formSchema = z
     // Validate passwords match
     if (data.password !== data.passwordConfirm) {
       ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+        code: 'custom',
         message: 'Passwords do not match',
         path: ['passwordConfirm']
       })
