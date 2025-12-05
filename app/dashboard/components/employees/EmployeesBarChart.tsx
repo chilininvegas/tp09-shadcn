@@ -9,7 +9,7 @@ import {
   XAxis,
   YAxis
 } from 'recharts'
-import {data} from './data'
+import {data} from '@/data/data'
 
 const EmployeesBarChart = () => {
   return (

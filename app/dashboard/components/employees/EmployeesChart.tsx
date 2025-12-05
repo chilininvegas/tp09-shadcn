@@ -6,7 +6,7 @@ const EmployeesChart = () => {
   return (
     <Card className='mt-4 pb-4'>
       <CardHeader>
-        <CardTitle className='text-[24px] flex items-center gap-2'>
+        <CardTitle className='text-2xl flex items-center gap-2'>
           <LaptopIcon />
           <span>Employee work location trends</span>
         </CardTitle>

@@ -4,13 +4,14 @@
 // by browser extensions don't cause hydration errors.
 'use client'
 
+import Link from 'next/link'
 import {PersonStandingIcon} from 'lucide-react'
 
 const MenuTitle = () => {
   return (
     <h4 className='flex items-center'>
       <PersonStandingIcon size={40} className='text-primary' />
-      SupportMe
+      <Link href='/dashboard'>SupportMe</Link>
     </h4>
   )
 }
