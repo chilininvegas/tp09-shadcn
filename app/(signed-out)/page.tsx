@@ -1,3 +1,11 @@
+// The landing page uses PersonStandingIcon from Lucide React, which renders SVG elements.
+// Browser extensions like Dark Reader modify these SVG elements by adding attributes like:
+//   style={{--darkreader-inline-stroke:"currentColor"}}
+//   data-darkreader-inline-stroke=""
+// By making the landing page a client component, it now renders entirely on the client side,
+// preventing the mismatch between server-rendered HTML and client-rendered HTML.
+'use client'
+
 import Link from 'next/link'
 import {Button} from '@/components/ui/button'
 import {PersonStandingIcon} from 'lucide-react'
