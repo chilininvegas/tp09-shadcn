@@ -14,7 +14,7 @@ const MenuItem = ({path, children}: {path: string; children: ReactNode}) => {
       <Link
         href={path}
         className={cn(
-          'block p-2 hover:bg-white dark:hover:bg-zinc-700 rounded-md text-muted-foregrond hover:text-foreground',
+          'block p-2 hover:bg-white dark:hover:bg-zinc-700 rounded-md text-muted-foreground hover:text-foreground',
           isActive &&
             'bg-primary hover:bg-primary dark:hover:bg-primary hover:text-primary-foreground text-primary-foreground'
         )}
