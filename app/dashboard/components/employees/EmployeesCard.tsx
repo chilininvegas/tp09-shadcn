@@ -35,7 +35,7 @@ const EmployeesCard = ({
   avatar
 }: EmployeesCardProps) => {
   return (
-    <Card className='flex flex-col'>
+    <Card className={cn('flex flex-col', avatar ? 'border-pink-500' : '')}>
       <CardHeader className='pb-0'>
         <CardTitle className='text-base'>{title}</CardTitle>
       </CardHeader>
@@ -43,14 +43,14 @@ const EmployeesCard = ({
       <CardContent className='flex justify-between items-center'>
         <div className='flex items-center gap-2'>
           {avatar ? (
-            <Avatar className='size-12'>
+            <Avatar className='size-10'>
               <AvatarImage src={avatar} alt={infoText} />
               <AvatarFallback>{infoText.charAt(0)}</AvatarFallback>
             </Avatar>
           ) : (
             icon
           )}
-          <div className={cn('font-bold', avatar ? 'text-5xl' : 'text-2xl')}>
+          <div className={cn('font-bold', avatar ? 'text-3xl' : 'text-2xl')}>
             {infoText}
           </div>
         </div>
