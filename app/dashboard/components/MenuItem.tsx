@@ -1,11 +1,13 @@
 'use client'
 
-import {ReactNode} from 'react'
+import {ReactNode, useContext} from 'react'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {cn} from '@/lib/utils'
+import {DrawerContext} from '@/components/ui/drawer'
 
 const MenuItem = ({path, children}: {path: string; children: ReactNode}) => {
+  const {onClose} = useContext<{onClose?: () => void}>(DrawerContext)
   const pathname = usePathname()
   const isActive = pathname === path
 
@@ -18,6 +20,7 @@ const MenuItem = ({path, children}: {path: string; children: ReactNode}) => {
           isActive &&
             'bg-primary hover:bg-primary dark:hover:bg-primary hover:text-primary-foreground text-primary-foreground'
         )}
+        onClick={() => onClose?.()}
       >
         {children}
       </Link>

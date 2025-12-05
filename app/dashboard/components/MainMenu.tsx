@@ -4,16 +4,20 @@
 // by browser extensions don't cause hydration errors.
 'use client'
 
+import {cn} from '@/lib/utils'
 import MenuItem from './MenuItem'
 import MenuTitle from './MenuTitle'
 import MenuFooter from './MenuFooter'
 
-const MainMenu = () => {
+const MainMenu = ({className}: {className?: string}) => {
   return (
-    <nav className='flex flex-col bg-muted overflow-y-auto p-4'>
-      <MenuTitle />
-      <hr className='dark:text-black text-zinc-300 my-4' />
-      <ul className='grow'>
+    <nav
+      className={cn('md:bg-muted overflow-auto p-4 flex flex-col', className)}
+    >
+      <header className='hidden md:block border-b dark:border-b-black border-b-zinc-300 pb-4'>
+        <MenuTitle />
+      </header>
+      <ul className='py-4 grow'>
         <MenuItem path='/dashboard'>Dashboard</MenuItem>
         <MenuItem path='/dashboard/teams'>Teams</MenuItem>
         <MenuItem path='/dashboard/employees'>Employees</MenuItem>
