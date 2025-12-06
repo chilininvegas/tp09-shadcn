@@ -19,7 +19,7 @@ export default function RootLayout({
 }: Readonly<{children: React.ReactNode}>) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={cn(poppins.className)}>
+      <body className={cn(poppins.className)} suppressHydrationWarning>
         {/* https://ui.shadcn.com/docs/dark-mode/next */}
         <ThemeProvider
           attribute='class'

@@ -21,7 +21,7 @@ const MainMenu = ({className}: {className?: string}) => {
         <MenuItem path='/dashboard'>Dashboard</MenuItem>
         <MenuItem path='/dashboard/teams'>Teams</MenuItem>
         <MenuItem path='/dashboard/employees'>Employees</MenuItem>
-        <MenuItem path='/dashboard/account'>Account</MenuItem>
+        <MenuItem path='/dashboard/summary'>Summary</MenuItem>
         <MenuItem path='/dashboard/settings'>Settings</MenuItem>
       </ul>
       <MenuFooter />

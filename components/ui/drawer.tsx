@@ -5,6 +5,7 @@ import {Drawer as DrawerPrimitive} from 'vaul'
 
 import {cn} from '@/lib/utils'
 
+// Provide context to pass onclose() to MenuItem
 export const DrawerContext = React.createContext<{onClose?: () => void}>({})
 
 function Drawer({

@@ -23,7 +23,7 @@ const LightDarkToggle = ({className}: {className?: string}) => {
             setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
           }}
         >
-          <Button variant='outline'>
+          <Button variant='outline' suppressHydrationWarning>
             <SunIcon className='block dark:hidden' />
             <MoonIcon className='hidden dark:block' />
           </Button>

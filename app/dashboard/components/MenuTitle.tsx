@@ -9,7 +9,7 @@ import {PersonStandingIcon} from 'lucide-react'
 
 const MenuTitle = () => {
   return (
-    <h4 className='flex items-center'>
+    <h4 className='flex items-center' suppressHydrationWarning>
       <PersonStandingIcon size={40} className='text-primary' />
       <Link href='/dashboard'>SupportMe</Link>
     </h4>

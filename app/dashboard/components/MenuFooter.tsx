@@ -6,7 +6,7 @@ import LightDarkToggle from '@/components/LightDarkToggle'
 
 const MenuFooter = () => {
   return (
-    <footer className='flex gap-2 items-center'>
+    <footer className='flex gap-2 items-center' suppressHydrationWarning>
       <Avatar>
         <AvatarFallback className='bg-pink-300 dark:bg-pink-800'>
           CL

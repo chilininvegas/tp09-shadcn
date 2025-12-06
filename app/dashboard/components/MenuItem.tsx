@@ -7,6 +7,7 @@ import {cn} from '@/lib/utils'
 import {DrawerContext} from '@/components/ui/drawer'
 
 const MenuItem = ({path, children}: {path: string; children: ReactNode}) => {
+  // Get onClose(), defined in app/dashboard/layout.tsx, from the context
   const {onClose} = useContext<{onClose?: () => void}>(DrawerContext)
   const pathname = usePathname()
   const isActive = pathname === path

@@ -3,7 +3,13 @@
 import {ReactNode, useState} from 'react'
 import {MenuIcon} from 'lucide-react'
 import {useMediaQuery} from '@/hooks/use-media-query'
-import {Drawer, DrawerTrigger, DrawerContent} from '@/components/ui/drawer'
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerTitle
+} from '@/components/ui/drawer'
+import {VisuallyHidden} from '@/components/ui/visually-hidden'
 import MainMenu from './components/MainMenu'
 import MenuTitle from './components/MenuTitle'
 
@@ -12,10 +18,14 @@ const DashboardLayout = ({children}: {children: ReactNode}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <div className='grid md:grid-cols-[250px_1fr] h-screen'>
+    <div className='md:grid md:grid-cols-[250px_1fr] h-screen'>
       {isMobile ? (
-        <nav className='p-4 flex justify-between md:hidden sticky top-0 left-0 bg-background border-b border-border'>
+        <nav
+          className='p-4 flex justify-between md:hidden sticky top-0 left-0 bg-background border-b border-border'
+          suppressHydrationWarning
+        >
           <MenuTitle />
+          {/* onClose() is passed to MenuItem to close the drawer through the context */}
           <Drawer
             direction='right'
             open={mobileMenuOpen}
@@ -27,6 +37,9 @@ const DashboardLayout = ({children}: {children: ReactNode}) => {
             </DrawerTrigger>
             {/* DrawerContent renders as a React Portal, so md:hidden does not apply here */}
             <DrawerContent>
+              <VisuallyHidden>
+                <DrawerTitle>Navigation Menu</DrawerTitle>
+              </VisuallyHidden>
               <MainMenu />
             </DrawerContent>
           </Drawer>
