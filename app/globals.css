@@ -153,6 +153,9 @@
   span {
     font-size: 1rem;
   }
+  ul li {
+    list-style-position: outside;
+  }
 }
 
 @layer utilities {

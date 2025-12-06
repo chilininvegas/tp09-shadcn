@@ -1,15 +1,24 @@
 import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card'
+import {Button} from '@/components/ui/button'
 import {PersonStanding} from 'lucide-react'
+import Link from 'next/link'
 
 const TermsPage = () => {
   return (
     <div className='container mx-auto max-w-4xl py-8'>
-      <div className='mb-6 flex justify-center'>
+      <div className='mb-6 flex justify-center items-center relative'>
         <PersonStanding size={50} className='text-primary' />
+        <div className='absolute right-0'>
+          <Button asChild>
+            <Link href='/dashboard'>Back to Dashboard</Link>
+          </Button>
+        </div>
       </div>
       <Card>
         <CardHeader>
-          <CardTitle className='text-3xl'>Terms and Conditions</CardTitle>
+          <CardTitle className='text-3xl text-center'>
+            Terms and Conditions
+          </CardTitle>
         </CardHeader>
         <CardContent className='space-y-4 text-sm leading-relaxed'>
           <p>
